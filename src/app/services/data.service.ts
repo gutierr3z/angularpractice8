@@ -1,14 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+
 @Injectable()
 export class DataService {
 
   data:Observable<Array<any>>;
   users:string[];
 
-  constructor() { 
+  constructor( public http:Http ) { 
     this.users = [ 'one', 'two' ];
+  }
+
+  getUsers() {
+    return this.http.get( 'http://jsonplaceholder.typicode.com/users' ).map( res => res.json() );
   }
 
   getData() {
@@ -37,8 +44,8 @@ export class DataService {
     return this.data;
   }
 
-  getUsers() {
-    return this.users;
-  }
+  // getUsers() {
+  //   return this.users;
+  // }
 
 }
