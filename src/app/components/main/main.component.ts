@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { DataService } from '../../services/data.service';
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  users:string[];
+
+  constructor( public dataService:DataService ) { 
+    this.users = this.dataService.getUsers();
+  }
 
   ngOnInit() {
   }
