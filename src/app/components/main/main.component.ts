@@ -21,11 +21,10 @@ export class MainComponent implements OnInit {
     });
 
     this.dataService.getUsers().subscribe( users => {
-      console.log( users );
+      // console.log( users );
+      this.users = users;
     });
   }
-
-  
 
   ngOnInit() {
   }
