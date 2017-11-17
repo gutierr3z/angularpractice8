@@ -9,10 +9,15 @@ import { DataService } from '../../services/data.service';
 })
 export class MainComponent implements OnInit {
 
+  data:any[] = [];
   users:string[];
 
   constructor( public dataService:DataService ) { 
     this.users = this.dataService.getUsers();
+    this.dataService.getData().subscribe( data => {
+      // console.log( data );
+      this.data.push( data );
+    });
   }
 
   ngOnInit() {
