@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class DataService {
 
-  data:Observable<Array<any>>;
+  data:Observable<Array<string>>;
   users:string[];
 
   constructor( public http:Http ) { 
@@ -21,19 +21,19 @@ export class DataService {
   getData() {
     this.data = new Observable( observer => {
       setTimeout( () => {
-        observer.next(1);
+        observer.next();
       }, 1000 );
 
       setTimeout( () => {
-        observer.next(2);
+        observer.next();
       }, 2000 );
 
       setTimeout( () => {
-        observer.next(3);
+        observer.next();
       }, 3000 );
 
       setTimeout( () => {
-        observer.next( 'hello' );
+        observer.next();
       }, 4000 );
 
       setTimeout( () => {
